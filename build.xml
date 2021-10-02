@@ -39,7 +39,12 @@
 	
 	<!-- Package the build into a JAR File after compilation & testing tasks are completed-->
 	<target name="builddist" depends="compile,test">
-		<jar destfile="${dist.dir}/jcg.jar" basedir="${bin.dir}" excludes="**/*Test.class">
+        <jar destfile="${dist.dir}/mjibk.jar" basedir="${bin.dir}" excludes="**/*Test.class">
+            <fileset dir="${lib.dir}" includes="*.jar" />
+            <!-- <zipfileset includes="**/*.class" src="./lib/*jar"/> -->
+            <manifest>
+                <attribute name="Main-Class" value="net.makenjoy.ibk.HelloWorld"/>
+            </manifest>
 		</jar>
 	</target>
 	
